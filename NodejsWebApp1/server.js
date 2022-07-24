@@ -14,19 +14,19 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + "/templates");
 app.get('/', (req, res) => {
     //res.contentType("text/plain");
-    res.render("index.html", { title: "Stream", streamHost: "34.143.192.209" });
+    res.render("index.html", { title: "Stream", streamHost: "localhost" /*"34.143.192.209"*/ });
     //res.sendFile(__dirname + "/templates/index.html");
 });
 app.get('/cam/:id', (req, res) => {
     //res.contentType("text/plain");
     let camId = req.params.id;
-    res.render("cam" + camId + ".html", { title: "Stream", streamHost: "34.143.192.209" });
+    res.render("cam" + camId + ".html", { title: "Stream", streamHost: "localhost" });
     //res.sendFile(__dirname + "/templates/index.html");
 });
 let rtspConvToWs1 = new node_rtsp_stream_1.default({
     name: 'cam1',
     streamUrl: _streamUrl + '/cam1',
-    wsPort: 555,
+    wsPort: 81,
     ffmpegOptions: {
         '-stats': '',
         '-r': 30 // options with required values specify the value after the key
@@ -35,7 +35,7 @@ let rtspConvToWs1 = new node_rtsp_stream_1.default({
 let rtspConvToWs2 = new node_rtsp_stream_1.default({
     name: 'cam2',
     streamUrl: _streamUrl + '/cam2',
-    wsPort: 559,
+    wsPort: 82,
     ffmpegOptions: {
         '-stats': '',
         '-r': 30 // options with required values specify the value after the key
@@ -44,7 +44,7 @@ let rtspConvToWs2 = new node_rtsp_stream_1.default({
 let rtspConvToWs3 = new node_rtsp_stream_1.default({
     name: 'cam3',
     streamUrl: _streamUrl + '/cam3',
-    wsPort: 557,
+    wsPort: 85,
     ffmpegOptions: {
         '-stats': '',
         '-r': 30 // options with required values specify the value after the key
@@ -53,7 +53,7 @@ let rtspConvToWs3 = new node_rtsp_stream_1.default({
 let rtspConvToWs4 = new node_rtsp_stream_1.default({
     name: 'cam4',
     streamUrl: _streamUrl + '/cam4',
-    wsPort: 558,
+    wsPort: 84,
     ffmpegOptions: {
         '-stats': '',
         '-r': 30 // options with required values specify the value after the key

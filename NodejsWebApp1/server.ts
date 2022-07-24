@@ -14,7 +14,7 @@ app.set('views', __dirname + "/templates");
 
 app.get('/', (req, res) => {
     //res.contentType("text/plain");
-    res.render("index.html", { title: "Stream", streamHost: "34.143.192.209" });
+    res.render("index.html", { title: "Stream", streamHost: "34.143.192.209"/* "localhost"  "34.143.192.209" */ });
     //res.sendFile(__dirname + "/templates/index.html");
 })
 app.get('/cam/:id', (req, res) => {
@@ -27,7 +27,7 @@ app.get('/cam/:id', (req, res) => {
 let rtspConvToWs1 = new Stream({
     name: 'cam1',
     streamUrl: _streamUrl + '/cam1',
-    wsPort: 555,
+    wsPort: 81,
     ffmpegOptions: { // options ffmpeg flags
         '-stats': '', // an option with no neccessary value uses a blank string
         '-r': 30 // options with required values specify the value after the key
@@ -36,7 +36,7 @@ let rtspConvToWs1 = new Stream({
 let rtspConvToWs2 = new Stream({
     name: 'cam2',
     streamUrl: _streamUrl + '/cam2',
-    wsPort: 559,
+    wsPort: 82,
     ffmpegOptions: { // options ffmpeg flags
         '-stats': '', // an option with no neccessary value uses a blank string
         '-r': 30 // options with required values specify the value after the key
@@ -45,7 +45,7 @@ let rtspConvToWs2 = new Stream({
 let rtspConvToWs3 = new Stream({
     name: 'cam3',
     streamUrl: _streamUrl + '/cam3',
-    wsPort: 557,
+    wsPort: 85,
     ffmpegOptions: { // options ffmpeg flags
         '-stats': '', // an option with no neccessary value uses a blank string
         '-r': 30 // options with required values specify the value after the key
@@ -54,7 +54,7 @@ let rtspConvToWs3 = new Stream({
 let rtspConvToWs4 = new Stream({
     name: 'cam4',
     streamUrl: _streamUrl + '/cam4',
-    wsPort: 558,
+    wsPort: 84,
     ffmpegOptions: { // options ffmpeg flags
         '-stats': '', // an option with no neccessary value uses a blank string
         '-r': 30 // options with required values specify the value after the key
