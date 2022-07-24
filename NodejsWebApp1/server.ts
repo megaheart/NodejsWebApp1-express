@@ -4,7 +4,8 @@ import fs = require("fs");
 import ws from "ws";
 import Stream from "node-rtsp-stream";
 import { AddressInfo } from 'net';
-const port = 80
+const port = 80;
+const _streamUrl = 'rtsp://localhost:554';
 var app = express();
 app.use(express.static('www'));
 app.engine('html', require('ejs').renderFile);
@@ -16,11 +17,44 @@ app.get('/', (req, res) => {
     res.render("index.html", { title: "Stream" });
     //res.sendFile(__dirname + "/templates/index.html");
 })
+app.get('/cam/:id', (req, res) => {
+    //res.contentType("text/plain");
+    let camId = req.params.id;
+    res.render("cam" + camId + ".html", { title: "Stream" });
+    //res.sendFile(__dirname + "/templates/index.html");
+})
 
-let rtspConvToWs = new Stream({
-    name: 'name',
-    streamUrl: 'rtsp://localhost:554/mystream',
-    wsPort: 9999,
+let rtspConvToWs1 = new Stream({
+    name: 'cam1',
+    streamUrl: _streamUrl + '/cam1',
+    wsPort: 555,
+    ffmpegOptions: { // options ffmpeg flags
+        '-stats': '', // an option with no neccessary value uses a blank string
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs2 = new Stream({
+    name: 'cam2',
+    streamUrl: _streamUrl + '/cam2',
+    wsPort: 559,
+    ffmpegOptions: { // options ffmpeg flags
+        '-stats': '', // an option with no neccessary value uses a blank string
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs3 = new Stream({
+    name: 'cam3',
+    streamUrl: _streamUrl + '/cam3',
+    wsPort: 557,
+    ffmpegOptions: { // options ffmpeg flags
+        '-stats': '', // an option with no neccessary value uses a blank string
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs4 = new Stream({
+    name: 'cam4',
+    streamUrl: _streamUrl + '/cam4',
+    wsPort: 558,
     ffmpegOptions: { // options ffmpeg flags
         '-stats': '', // an option with no neccessary value uses a blank string
         '-r': 30 // options with required values specify the value after the key

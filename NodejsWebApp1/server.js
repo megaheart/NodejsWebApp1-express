@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const node_rtsp_stream_1 = __importDefault(require("node-rtsp-stream"));
 const port = 80;
+const _streamUrl = 'rtsp://localhost:554';
 var app = (0, express_1.default)();
 app.use(express_1.default.static('www'));
 app.engine('html', require('ejs').renderFile);
@@ -16,10 +17,43 @@ app.get('/', (req, res) => {
     res.render("index.html", { title: "Stream" });
     //res.sendFile(__dirname + "/templates/index.html");
 });
-let rtspConvToWs = new node_rtsp_stream_1.default({
-    name: 'name',
-    streamUrl: 'rtsp://localhost:554/mystream',
-    wsPort: 9999,
+app.get('/cam/:id', (req, res) => {
+    //res.contentType("text/plain");
+    let camId = req.params.id;
+    res.render("cam" + camId + ".html", { title: "Stream" });
+    //res.sendFile(__dirname + "/templates/index.html");
+});
+let rtspConvToWs1 = new node_rtsp_stream_1.default({
+    name: 'cam1',
+    streamUrl: _streamUrl + '/cam1',
+    wsPort: 555,
+    ffmpegOptions: {
+        '-stats': '',
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs2 = new node_rtsp_stream_1.default({
+    name: 'cam2',
+    streamUrl: _streamUrl + '/cam2',
+    wsPort: 559,
+    ffmpegOptions: {
+        '-stats': '',
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs3 = new node_rtsp_stream_1.default({
+    name: 'cam3',
+    streamUrl: _streamUrl + '/cam3',
+    wsPort: 557,
+    ffmpegOptions: {
+        '-stats': '',
+        '-r': 30 // options with required values specify the value after the key
+    }
+});
+let rtspConvToWs4 = new node_rtsp_stream_1.default({
+    name: 'cam4',
+    streamUrl: _streamUrl + '/cam4',
+    wsPort: 558,
     ffmpegOptions: {
         '-stats': '',
         '-r': 30 // options with required values specify the value after the key

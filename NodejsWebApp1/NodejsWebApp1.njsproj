@@ -32,6 +32,19 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="templates\cam1.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\cam2.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\cam3.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\cam4.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="www\favicon.ico" />
     <None Include="server.ts" />
     <Content Include="templates\index.html">
       <SubType>Code</SubType>
@@ -43,6 +56,11 @@
   <ItemGroup>
     <Folder Include="templates\" />
     <Folder Include="www\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="websocket.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
