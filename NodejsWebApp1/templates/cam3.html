@@ -28,7 +28,7 @@
         <canvas class="cam-canvas" id="canvas-cam3"></canvas>
     </div>
     <script>
-         let player3 = new JSMpeg.Player('ws://localhost:557', {
+        let player3 = new JSMpeg.Player('ws://<%=streamHost%>:557', {
              canvas: document.getElementById('canvas-cam3'), // Canvas should be a canvas DOM element
              autoplay: true,
              audio: false,

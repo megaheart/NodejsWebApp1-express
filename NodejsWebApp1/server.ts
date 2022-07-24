@@ -14,13 +14,13 @@ app.set('views', __dirname + "/templates");
 
 app.get('/', (req, res) => {
     //res.contentType("text/plain");
-    res.render("index.html", { title: "Stream" });
+    res.render("index.html", { title: "Stream", streamHost: "34.143.192.209" });
     //res.sendFile(__dirname + "/templates/index.html");
 })
 app.get('/cam/:id', (req, res) => {
     //res.contentType("text/plain");
     let camId = req.params.id;
-    res.render("cam" + camId + ".html", { title: "Stream" });
+    res.render("cam" + camId + ".html", { title: "Stream", streamHost: "34.143.192.209" });
     //res.sendFile(__dirname + "/templates/index.html");
 })
 

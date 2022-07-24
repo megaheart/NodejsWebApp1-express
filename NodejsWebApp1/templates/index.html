@@ -30,22 +30,22 @@
         <canvas class="cam-canvas" id="canvas-cam4"></canvas>
     </div>
     <script>
-         let player1 = new JSMpeg.Player('ws://localhost:555', {
+        let player1 = new JSMpeg.Player('ws://<%=streamHost%>:555', {
              canvas: document.getElementById('canvas-cam1'), // Canvas should be a canvas DOM element
              autoplay: true,
              audio: false,
          });
-         let player2 = new JSMpeg.Player('ws://localhost:559', {
+        let player2 = new JSMpeg.Player('ws://<%=streamHost%>:559', {
              canvas: document.getElementById('canvas-cam2'), // Canvas should be a canvas DOM element
              autoplay: true,
              audio: false,
          });
-         let player3 = new JSMpeg.Player('ws://localhost:557', {
+        let player3 = new JSMpeg.Player('ws://<%=streamHost%>:557', {
              canvas: document.getElementById('canvas-cam3'), // Canvas should be a canvas DOM element
              autoplay: true,
              audio: false,
          });
-         let player4 = new JSMpeg.Player('ws://localhost:558', {
+        let player4 = new JSMpeg.Player('ws://<%=streamHost%>:558', {
              canvas: document.getElementById('canvas-cam4'), // Canvas should be a canvas DOM element
              autoplay: true,
              audio: false,
