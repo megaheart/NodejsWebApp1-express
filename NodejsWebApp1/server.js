@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const node_rtsp_stream_1 = __importDefault(require("node-rtsp-stream"));
 const port = 80;
-const _streamUrl = 'rtsp://localhost:554';
+const _streamUrl = 'rtsp://34.127.2.194:554';
 var app = (0, express_1.default)();
 app.use(express_1.default.static('www'));
 app.engine('html', require('ejs').renderFile);

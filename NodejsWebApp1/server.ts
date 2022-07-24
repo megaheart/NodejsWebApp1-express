@@ -5,7 +5,7 @@ import ws from "ws";
 import Stream from "node-rtsp-stream";
 import { AddressInfo } from 'net';
 const port = 80;
-const _streamUrl = 'rtsp://localhost:554';
+const _streamUrl = 'rtsp://34.127.2.194:554';
 var app = express();
 app.use(express.static('www'));
 app.engine('html', require('ejs').renderFile);
